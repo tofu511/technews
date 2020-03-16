@@ -1,5 +1,8 @@
-export default {
+import { Configuration as NuxtConfiguration } from '@nuxt/types'
+
+const config: NuxtConfiguration = {
   mode: 'universal',
+  srcDir: 'src',
   /*
    ** Headers of the page
    */
@@ -33,7 +36,8 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxt/typescript-build'
   ],
   /*
    ** Nuxt.js modules
@@ -54,6 +58,14 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    // extend(config: any, ctx: any) {}
+  },
+  typescript: {
+    typeCheck: {
+      eslint: true
+    },
+    ignoreNotFoundWarnings: true
   }
 }
+
+module.exports = config
