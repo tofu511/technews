@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div>
-      <logo />
       <h1 class="title">
         technews
       </h1>
@@ -26,12 +25,9 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import Logo from '~/components/Logo.vue'
 
 @Component({
-  components: {
-    Logo
-  }
+  components: {}
 })
 export default class IndexPage extends Vue {}
 </script>

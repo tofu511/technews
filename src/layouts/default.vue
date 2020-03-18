@@ -1,8 +1,23 @@
 <template>
   <div>
+    <site-header />
     <nuxt />
+    <site-footer />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import SiteHeader from '@/components/layout/header.vue'
+import SiteFooter from '@/components/layout/footer.vue'
+
+export default Vue.extend({
+  components: {
+    SiteHeader,
+    SiteFooter
+  }
+})
+</script>
 
 <style>
 html {
