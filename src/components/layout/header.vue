@@ -94,7 +94,7 @@ export default class Footer extends Vue {
     }
   }
 
-@include phone {
+@include mobile {
   .nav-wrapper {
     display: flex;
     align-items: center;
