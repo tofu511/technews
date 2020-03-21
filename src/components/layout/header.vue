@@ -5,8 +5,8 @@
         <template v-for="(site, key) in sites">
           <li :key="key">
             <nuxt-link
-              :to="`/${site.path}`"
-              :class="{ active: activeSite(site.title, key) }"
+              :to="`${site.path}`"
+              :class="{ active: isActivePath(site.path) }"
             >
               {{ site.title }}
             </nuxt-link>
@@ -29,35 +29,35 @@ export default class Footer extends Vue {
   sites: Array<Site> = [
     {
       title: 'Home',
-      path: ''
+      path: '/'
     },
     {
       title: 'Hacker News',
-      path: 'hn'
+      path: '/hn'
     },
     {
       title: 'DEV',
-      path: 'dev'
+      path: '/dev'
     }
   ]
 
   isActive: Boolean = true
 
-  activeSite (siteTitle: String, index: number): Boolean {
-    const hoge = this.sites[index].title
-    const fuga = siteTitle
-    return hoge === fuga
+  isActivePath (path: String): Boolean {
+    return this.$nuxt.$route.path === path
   }
 }
 </script>
 
 <style lang="scss" scoped>
-ul {
+.nav-inner {
+  background-color: #212121;
+
+  ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #212121;
 }
 
 li {
@@ -66,7 +66,7 @@ li {
   a {
     color: #f5f3f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 12px;
     text-decoration: none;
     &:hover {
       opacity: 0.5;
@@ -76,4 +76,6 @@ li {
     }
   }
 }
+}
+
 </style>
