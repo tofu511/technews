@@ -1,12 +1,15 @@
 <template>
   <header class="header">
     <nav class="nav-inner">
-      <nuxt-link to="/">
-        Home
-      </nuxt-link>
-      <nuxt-link v-for="(site, key) in sites" :key="key" :to="`/${site.path}`">
-        {{ site.title }}
-      </nuxt-link>
+      <ul>
+        <template v-for="(site, key) in sites">
+          <li :key="key">
+            <nuxt-link :to="`/${site.path}`">
+              {{ site.title }}
+            </nuxt-link>
+          </li>
+        </template>
+      </ul>
     </nav>
   </header>
 </template>
@@ -22,6 +25,10 @@ interface Site {
 export default class Footer extends Vue {
   sites: Array<Site> = [
     {
+      title: 'Home',
+      path: ''
+    },
+    {
       title: 'Hacker News',
       path: 'hn'
     },
@@ -33,4 +40,26 @@ export default class Footer extends Vue {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #212121;
+}
+
+li {
+  float: left;
+
+  a {
+    color: #f5f3f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+</style>

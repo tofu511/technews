@@ -44,8 +44,14 @@ const config: NuxtConfiguration = {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-webfontloader'
   ],
+  webfontloader: {
+    google: {
+      families: ['Poppins']
+    }
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

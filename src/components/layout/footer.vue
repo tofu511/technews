@@ -6,6 +6,12 @@
 
 <style lang="scss" scoped>
 .footer {
-  margin: 10px;
+  margin: 0;
+  padding: 0;
+  background-color: #212121;
+
+  span {
+    color: #f5f3f2;
+  }
 }
 </style>
