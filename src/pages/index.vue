@@ -1,26 +1,5 @@
 <template>
-  <div class="container">
-    <div>
-      <h1 class="title">
-        technews
-      </h1>
-      <h2 class="subtitle">
-        Tech News App
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <div>This is index page</div>
 </template>
 
 <script lang="ts">
@@ -32,7 +11,7 @@ import { Vue, Component } from 'vue-property-decorator'
 export default class IndexPage extends Vue {}
 </script>
 
-<style>
+<style lang="scss" scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;

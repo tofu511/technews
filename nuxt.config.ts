@@ -47,7 +47,8 @@ const config: NuxtConfiguration = {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Axios module configuration
@@ -68,6 +69,11 @@ const config: NuxtConfiguration = {
       eslint: true
     },
     ignoreNotFoundWarnings: true
+  },
+  styleResources: {
+    scss: [
+      '~/assets/scss/mixin/media.scss'
+    ]
   }
 }
 
