@@ -48,7 +48,8 @@ const config: NuxtConfiguration = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    'nuxt-fontawesome'
   ],
   /*
    ** Axios module configuration
@@ -73,6 +74,18 @@ const config: NuxtConfiguration = {
   styleResources: {
     scss: [
       '~/assets/scss/mixin/media.scss'
+    ]
+  },
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab']
+      }
     ]
   }
 }
