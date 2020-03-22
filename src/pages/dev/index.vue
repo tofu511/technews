@@ -1,5 +1,7 @@
 <template>
-  <div>This is dev page</div>
+  <div>
+    This is dev page
+  </div>
 </template>
 
 <script lang="ts">

@@ -9,24 +9,32 @@
                 :to="`${site.path}`"
                 :class="{ active: isActivePath(site.path) }"
               >
-                <font-awesome-icon :icon="[site.iconPrefix, site.iconName]" class="icon"/>
+                <font-awesome-icon :icon="[site.iconPrefix, site.iconName]" class="icon" />
               </nuxt-link>
             </li>
           </template>
         </ul>
       </div>
     </nav>
+    <SubMenu />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Component, Vue } from 'vue-property-decorator'
+import SubMenu from '@/components/SubMenu.vue'
 
 interface Site {
   path: string
   iconPrefix: string
   iconName: string
 }
+
+@Component({
+  components: {
+    SubMenu
+  }
+})
 
 export default class Footer extends Vue {
   sites: Array<Site> = [
@@ -36,7 +44,7 @@ export default class Footer extends Vue {
       iconName: 'home'
     },
     {
-      path: '/hn',
+      path: '/hackernews',
       iconPrefix: 'fab',
       iconName: 'hacker-news-square'
     },
@@ -56,7 +64,7 @@ export default class Footer extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.nav-content {
   background-color: #212121;
   overflow: hidden;
 }
