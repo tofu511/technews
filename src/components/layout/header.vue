@@ -7,7 +7,6 @@
             <li :key="key">
               <nuxt-link
                 :to="`${site.path}`"
-                :class="{ active: isActivePath(site.path) }"
               >
                 <font-awesome-icon :icon="[site.iconPrefix, site.iconName]" class="icon" />
               </nuxt-link>
@@ -44,22 +43,16 @@ export default class Footer extends Vue {
       iconName: 'home'
     },
     {
-      path: '/hackernews',
+      path: '/hackernews/news',
       iconPrefix: 'fab',
       iconName: 'hacker-news-square'
     },
     {
-      path: '/dev',
+      path: '/dev/rising',
       iconPrefix: 'fab',
       iconName: 'dev'
     }
   ]
-
-  isActive: Boolean = false
-
-  isActivePath (path: String): Boolean {
-    return this.$nuxt.$route.path === path
-  }
 }
 </script>
 
