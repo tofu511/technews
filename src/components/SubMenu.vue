@@ -1,9 +1,12 @@
 <template>
   <div class="container">
     <ul>
-      <template v-for="(path, key) in getLinksFromPath(currentPath)">
+      <template v-for="(path, key) in siteLinks">
         <li :key="key">
-          <nuxt-link :to="`/${currentPath}/${path}`">
+          <nuxt-link
+            :to="`/${siteName}/${path}`"
+            :class="{ active: isActivePath(path) }"
+          >
             {{ path }}
           </nuxt-link>
         </li>
@@ -21,17 +24,30 @@ export default class SubMenu extends Vue {
       ['dev', ['rising', 'week', 'month', 'year', 'podcast']]
     ])
 
+    isActive: Boolean = false
+
+    isActivePath (path: String): Boolean {
+      const current = this.currentPath
+      return current.slice(current.indexOf('/') + 1, current.length) === path
+    }
+
     get currentPath (): String {
       return this.$nuxt.$route.path.substr(1)
     }
 
-    getLinksFromPath (path: String): Array<String> {
-      let key
+    get siteName (): String {
+      const path = this.$nuxt.$route.path.substr(1)
+      let site
       if (path.includes('/')) {
-        key = path.slice(0, path.indexOf('/'))
+        site = path.slice(0, path.indexOf('/'))
       } else {
-        key = path
+        site = path
       }
+      return site
+    }
+
+    get siteLinks (): Array<String> {
+      const key = this.siteName
       const links = this.links.get(key)
       if (links) {
         return links
@@ -44,4 +60,34 @@ export default class SubMenu extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  background-color: #212121;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  margin: -10px 0 0 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+  a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 0 10px;
+    transition: 100ms;
+    &:hover {
+      opacity: 0.5;
+    }
+    &.active {
+      color: #00bfa5;
+    }
+  }
+}
+
 </style>
