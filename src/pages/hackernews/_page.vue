@@ -8,13 +8,11 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  async asyncData (context):Promise<Object> {
-    const res = await context.$axios.$get(`https://api.hnpwa.com/v0/${context.params.page}/1.json`)
+  async asyncData ({ $axios, params }):Promise<Object> {
+    const res = await $axios.$get(`https://api.hnpwa.com/v0/${params.page}/1.json`)
     return { result: res }
   }
 })
 
-export default class Page extends Vue {
-  // result: Object = {}
-}
+export default class Page extends Vue {}
 </script>
