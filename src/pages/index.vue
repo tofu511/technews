@@ -8,7 +8,9 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component({
-  components: {}
+  fetch ({ redirect }) {
+    redirect(301, '/hackernews/news')
+  }
 })
 export default class IndexPage extends Vue {}
 </script>

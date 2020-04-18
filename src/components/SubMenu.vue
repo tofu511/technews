@@ -21,7 +21,7 @@ import { Vue } from 'vue-property-decorator'
 export default class SubMenu extends Vue {
     links: Map<String, Array<String>> = new Map([
       ['hackernews', ['news', 'newest', 'ask', 'show', 'jobs']],
-      ['dev', ['rising', 'week', 'month', 'year', 'podcast']]
+      ['dev', ['rising', 'week', 'month', 'year']]
     ])
 
     isActive: Boolean = false

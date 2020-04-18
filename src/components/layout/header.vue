@@ -38,11 +38,6 @@ interface Site {
 export default class Footer extends Vue {
   sites: Array<Site> = [
     {
-      path: '/',
-      iconPrefix: 'fas',
-      iconName: 'home'
-    },
-    {
       path: '/hackernews/news',
       iconPrefix: 'fab',
       iconName: 'hacker-news-square'
