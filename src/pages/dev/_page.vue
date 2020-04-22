@@ -31,8 +31,14 @@ const routing = (path: string): string => {
 }
 
 @Component({
-  async asyncData ({ $axios, params }):Promise<Object> {
+  async asyncData ({ $axios, params, error }):Promise<Object> {
     const res = await $axios.$get(`https://dev.to/api/${routing(params.page)}`)
+      .then((res: any) => {
+        if (!routing(params.page)) {
+          return error({ statusCode: 404 })
+        }
+        return res
+      })
     return { result: res }
   }
 })
