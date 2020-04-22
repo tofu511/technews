@@ -9,7 +9,6 @@
         </li>
       </ul>
     </article>
-    <pre>{{ result }}</pre>
   </div>
 </template>
 
