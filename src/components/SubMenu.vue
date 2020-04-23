@@ -3,12 +3,12 @@
     <ul>
       <template v-for="(path, key) in siteLinks">
         <li :key="key">
-          <router-link
-            :to="`/${siteName}/${path}`"
+          <a
+            :href="`/${siteName}/${path}`"
             :class="{ active: isActivePath(path) }"
           >
             {{ path }}
-          </router-link>
+          </a>
         </li>
       </template>
     </ul>
