@@ -3,12 +3,12 @@
     <ul>
       <template v-for="(path, key) in siteLinks">
         <li :key="key">
-          <nuxt-link
+          <router-link
             :to="`/${siteName}/${path}`"
             :class="{ active: isActivePath(path) }"
           >
             {{ path }}
-          </nuxt-link>
+          </router-link>
         </li>
       </template>
     </ul>
