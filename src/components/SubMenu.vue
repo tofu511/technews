@@ -20,7 +20,7 @@ import { Vue } from 'vue-property-decorator'
 
 export default class SubMenu extends Vue {
     links: Map<String, Array<String>> = new Map([
-      ['hackernews', ['news', 'newest', 'ask', 'show', 'jobs']],
+      ['hackernews', ['news', 'newest', 'show', 'jobs']],
       ['dev', ['rising', 'week', 'month', 'year']]
     ])
 

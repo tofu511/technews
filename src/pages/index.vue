@@ -1,49 +1,53 @@
 <template>
-  <div class="container">
-    This is index page
+  <div>
+    <article class="hn">
+      <ul>
+        <li v-for="elem in result" :key="elem.id">
+          <a :href="elem.url">{{ elem.title }} <span>({{ elem.domain }})</span></a>
+          <p>{{ elem.points }} points by {{ elem.user }} {{ elem.time_ago }}</p>
+        </li>
+      </ul>
+    </article>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  fetch ({ redirect }) {
-    redirect(301, '/hackernews/news')
+  async asyncData ({ $axios, error }):Promise<Object> {
+    const res = await $axios.$get('https://api.hnpwa.com/v0/news/1.json')
+      .then((res: any) => {
+        return res
+      }).catch(() => {
+        return error({ statusCode: 404 })
+      })
+    return { result: res }
   }
 })
-export default class IndexPage extends Vue {}
+
+export default class Page extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+li {
+  list-style: decimal;
+  margin-top: 21px;
+  margin-bottom: 21px;
+
+  a {
+    text-decoration: none;
+    color: #212121;
+
+    span {
+      font-size: 16px;
+      color: #828282;
+    }
+  }
+  p {
+    font-size: 16px;
+    color: #828282;
+  }
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
