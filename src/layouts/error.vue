@@ -10,15 +10,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-
-@Component
-export default class Error extends Vue {
-  @Prop({ type: Object, required: false, default: null })
-  error: object;
-}
+import Vue from 'vue'
+export default Vue.extend({
+  props: {
+    error: {
+      type: Object,
+      required: false,
+      default: null
+    }
+  }
+})
 </script>
-
 <style lang="scss" scoped>
 .error-container {
   margin: 0 auto;
